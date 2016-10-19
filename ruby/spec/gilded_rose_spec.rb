@@ -34,8 +34,9 @@ describe GildedRose do
         expect(brie.quality).to eq 25
       end
 
-      xit "the quality of an item is never more than 50" do
-
+      it "the quality of an item is never more than 50" do
+        50.times {gilded_rose.update_quality}
+        expect(brie.quality).to eq 50
       end
 
       xit "Sulfuras never degrades in quality" do
