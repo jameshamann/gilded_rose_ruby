@@ -5,7 +5,9 @@ require File.join(File.dirname(__FILE__), '../item')
 describe GildedRose do
   let(:item) {Item.new('apple',5,20)}
   let(:brie) {Item.new('Aged Brie', 5, 20)}
-  subject(:gilded_rose) {described_class.new([item, brie])}
+  let(:sulfuras) {Item.new('Sulfuras, Hand of Ragnaros',6,30)}
+  let(:backstage) {Item.new('Backstage passes to a TAFKAL80ETC concert',10,20)}
+  subject(:gilded_rose) {described_class.new([item, brie, sulfuras, backstage])}
 
 
   describe "#update_quality" do
@@ -39,24 +41,24 @@ describe GildedRose do
         expect(brie.quality).to eq 50
       end
 
-      xit "Sulfuras never degrades in quality" do
-
+      it "Sulfuras never degrades in quality" do
+        20.times {gilded_rose.update_quality}
+        expect(sulfuras.quality).to eq 30
       end
 
-      xit "backstage pass quality increases by two within 10 daysor less of the concert" do
-
+      it "backstage pass quality increases by two within 10 daysor less of the concert" do
+        5.times {gilded_rose.update_quality}
+        expect(backstage.quality).to eq 30
       end
 
-      xit "backstage pass quality increases by 3 within 5 days or less of concert" do
-
+      it "backstage pass quality increases by 3 within 5 days or less of concert" do
+        9.times {gilded_rose.update_quality}
+        expect(backstage.quality).to eq 42
       end
 
-      xit "backstage pass quality drops to 0 after the concert has taken place" do
-
+      it "backstage pass quality drops to 0 after the concert has taken place" do
+        11.times {gilded_rose.update_quality}
+        expect(backstage.quality).to eq 0
       end
-
-      xit "conjured items degrade twice as fast as normal items" do
-
-    end
   end
 end
