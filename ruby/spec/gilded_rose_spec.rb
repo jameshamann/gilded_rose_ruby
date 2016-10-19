@@ -1,8 +1,8 @@
-require File.join(File.dirname(__FILE__), '../gilded_rose')
+require File.join(File.dirname(__FILE__), '../gilded_rose_refactor')
 require File.join(File.dirname(__FILE__), '../item')
 
 
-describe GildedRose do
+describe GildedRoseRefactor do
   let(:item) {Item.new('apple',5,20)}
   let(:brie) {Item.new('Aged Brie', 5, 20)}
   let(:sulfuras) {Item.new('Sulfuras, Hand of Ragnaros',6,30)}
