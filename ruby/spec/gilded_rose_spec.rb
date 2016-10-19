@@ -23,8 +23,9 @@ describe GildedRose do
         expect(item.quality).to eq 5
       end
 
-      xit "the quality of an item is never negative" do
-
+      it "the quality of an item is never negative" do
+        20.times {gilded_rose.update_quality}
+        expect(item.quality).to eq 0
       end
 
       xit "aged brie increases in quality as time goes on" do
