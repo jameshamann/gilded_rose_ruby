@@ -29,8 +29,15 @@ class GildedRoseRefactor
   end
 
   def update_backstage(item)
-    
-
+    if item.sell_in <= 5
+      item.quality += 3
+    elsif item.sell_in <= 10
+      item.quality += 2
+    else
+      item.quality += 1
+    end
+    item.quality = 0 if item.sell_in <= 0
+    decrease_sell_in(item)
   end
 
   def update_sulfuras(item)
@@ -55,7 +62,4 @@ class GildedRoseRefactor
   def decrease_sell_in(item)
     item.sell_in -= 1
   end
-
-
-
 end
