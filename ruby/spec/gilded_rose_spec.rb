@@ -4,7 +4,8 @@ require File.join(File.dirname(__FILE__), '../item')
 
 describe GildedRose do
   let(:item) {Item.new('apple',5,20)}
-  subject(:gilded_rose) {described_class.new([item])}
+  let(:brie) {Item.new('Aged Brie', 5, 20)}
+  subject(:gilded_rose) {described_class.new([item, brie])}
 
 
   describe "#update_quality" do
@@ -28,8 +29,9 @@ describe GildedRose do
         expect(item.quality).to eq 0
       end
 
-      xit "aged brie increases in quality as time goes on" do
-
+      it "aged brie increases in quality as time goes on" do
+        5.times {gilded_rose.update_quality}
+        expect(brie.quality).to eq 25
       end
 
       xit "the quality of an item is never more than 50" do
